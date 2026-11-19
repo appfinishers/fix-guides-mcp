@@ -14,7 +14,9 @@ const CORS = {
 
 const RULES = DATA.guides.map(g => ({ g, res: g.p.map(s => new RegExp(s, "i")) }));
 const BY_SLUG = new Map(DATA.guides.map(g => [g.s, g]));
-const url = g => `${SITE}/guides/${g.s}/`;
+// ?ref=mcp lets the site's request counts tell that a visit came from here. It carries nothing about the user, and the
+// guide pages name their canonical URL without it.
+const url = g => `${SITE}/guides/${g.s}/?ref=mcp`;
 
 const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
 const TOOLS = [

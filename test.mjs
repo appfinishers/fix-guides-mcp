@@ -43,6 +43,8 @@ check("lookup_error: RLS insert error", m1.length > 0 && /row-level-security|rls
 r = await call("lookup_error", { error: "PGRST205: Could not find the table 'public.todos' in the schema cache" });
 const m2 = r.body.result?.structuredContent?.matches || [];
 check("lookup_error: PGRST205", m2[0]?.slug === "supabase-could-not-find-the-table-in-the-schema-cache", JSON.stringify(m2).slice(0, 300));
+check("lookup_error: links carry ?ref=mcp", m2.length > 0 && m2.every(x => x.url === `https://appfinishers.com/guides/${x.slug}/?ref=mcp`),
+  JSON.stringify(m2).slice(0, 300));
 
 r = await call("lookup_error", { error: "zzqx nothing like an error here" });
 check("lookup_error: no match is not an error", r.body.result?.isError === false && /No guide matches/.test(r.body.result.content[0].text));
@@ -53,7 +55,7 @@ check("lookup_error: missing argument → isError", r.body.result?.isError === t
 const slug = m2[0]?.slug || "supabase-could-not-find-the-table-in-the-schema-cache";
 r = await call("get_guide", { slug });
 const g = r.body.result?.content?.[0]?.text || "";
-check("get_guide: full text + source", g.startsWith("# ") && g.length > 1500 && g.includes(`Source: https://appfinishers.com/guides/${slug}/`), g.slice(0, 120));
+check("get_guide: full text + source", g.startsWith("# ") && g.length > 1500 && g.includes(`Source: https://appfinishers.com/guides/${slug}/?ref=mcp`), g.slice(0, 120));
 
 r = await call("get_guide", { slug: "/guides/" + slug + "/" });
 check("get_guide: path form accepted", r.body.result?.isError === false);
