@@ -20,7 +20,7 @@ you through the fix.
 
 All three are marked read-only (`readOnlyHint: true`). They change nothing anywhere.
 
-89 guides (November 2026), in seven groups: Supabase database · Supabase Auth and logins · Edge Functions, Stripe and
+90 guides (November 2026), in seven groups: Supabase database · Supabase Auth and logins · Edge Functions, Stripe and
 email · Lovable · Bolt, Replit and others · MCP servers · Other.
 
 ## Add it to your assistant
