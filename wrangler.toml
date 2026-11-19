@@ -1,0 +1,8 @@
+name = "appfinishers-mcp"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+workers_dev = false
+# Exact path only: everything else on the domain stays with the Pages site and the api Worker.
+routes = [
+  { pattern = "appfinishers.com/mcp", zone_name = "appfinishers.com" },
+]

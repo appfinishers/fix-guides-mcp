@@ -1,0 +1,18 @@
+{
+  "name": "fix-guides-mcp",
+  "version": "1.0.2",
+  "private": true,
+  "description": "Public, read-only MCP server: App Finishers fix guides for errors in apps built with Lovable, Bolt, Replit, Cursor and Supabase.",
+  "type": "module",
+  "scripts": {
+    "test": "node test.mjs",
+    "test:live": "node test.mjs https://appfinishers.com/mcp",
+    "deploy": "wrangler deploy"
+  },
+  "homepage": "https://appfinishers.com/connector/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appfinishers/fix-guides-mcp.git"
+  },
+  "license": "MIT"
+}
